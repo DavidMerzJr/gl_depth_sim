@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include <gl_depth_sim/glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -10,7 +12,7 @@
 #include <gl_depth_sim/mesh_loader.h>
 #include <gl_depth_sim/renderable_mesh.h>
 
-#include <iostream>
+#include <ros/package.h>
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -60,9 +62,9 @@ int main(int argc, char** argv)
   std::unique_ptr<gl_depth_sim::RenderableMesh> renderable_mesh(new gl_depth_sim::RenderableMesh{ *mesh_ptr });
 
   // Compile the shaders
-  std::string v_shader_path = "/home/mpowelson/workspaces/noether/src/gl_depth_sim/include/gl_depth_sim/shaders/"
+  std::string v_shader_path = ros::package::getPath("gl_depth_sim") + "/include/gl_depth_sim/shaders/"
                               "deposition_vertex_shader.h";
-  std::string f_shader_path = "/home/mpowelson/workspaces/noether/src/gl_depth_sim/include/gl_depth_sim/shaders/"
+  std::string f_shader_path = ros::package::getPath("gl_depth_sim") + "/include/gl_depth_sim/shaders/"
                               "deposition_fragment_shader.h";
   gl_depth_sim::ShaderProgram shader_program(v_shader_path, f_shader_path, true);
   shader_program.use();

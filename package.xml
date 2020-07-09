@@ -12,9 +12,10 @@
   <depend>roscpp</depend>
 
   <!--Used for examples and interfacing-->
+  <depend>pcl_ros</depend>
+  <depend>roslib</depend>
   <depend>tf</depend>
   <depend>tf_conversions</depend>
-  <depend>pcl_ros</depend>
 
   <!-- system dependency -->
   <build_depend>libglfw3-dev</build_depend>

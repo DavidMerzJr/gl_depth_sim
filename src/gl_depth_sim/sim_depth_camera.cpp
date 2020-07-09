@@ -3,6 +3,8 @@
 // OpenGL context
 #include <GLFW/glfw3.h>
 
+#include <ros/package.h>
+
 #include <iostream>
 
 const static std::string vertex_shader_source =
@@ -55,8 +57,10 @@ gl_depth_sim::SimDepthCamera::SimDepthCamera(const gl_depth_sim::CameraPropertie
 
   // Now that opengl is ready, we can load shaders
 //  depth_program_.reset(new ShaderProgram{vertex_shader_source, frag_shader_source});
-  std::string v_shader_path = "/home/mpowelson/workspaces/noether/src/gl_depth_sim/include/gl_depth_sim/shaders/deposition_vertex_shader.h";
-  std::string f_shader_path = "/home/mpowelson/workspaces/noether/src/gl_depth_sim/include/gl_depth_sim/shaders/deposition_fragment_shader.h";
+  std::string v_shader_path = ros::package::getPath("gl_depth_sim") + "/include/gl_depth_sim/shaders/"
+                              "deposition_vertex_shader.h";
+  std::string f_shader_path = ros::package::getPath("gl_depth_sim") + "/include/gl_depth_sim/shaders/"
+                              "deposition_fragment_shader.h";
   depth_program_.reset(new ShaderProgram{v_shader_path, f_shader_path, true});
 
 }

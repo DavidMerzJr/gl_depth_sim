@@ -5,6 +5,7 @@ add_compile_options(-std=c++11 -Wall -Wextra)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp # Used for ROS examples
+  roslib # Used to find paths to plugins/shaders
   pcl_ros # Used for interfaces extension
   tf # Used for ROS example
   tf_conversions # Used for ROS example
@@ -22,7 +23,7 @@ find_package(OpenCV REQUIRED) # Used for interface extension
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME} ${PROJECT_NAME}_interfaces
-  CATKIN_DEPENDS pcl_ros
+  CATKIN_DEPENDS pcl_ros roslib
   DEPENDS OpenCV
 )
 
@@ -47,6 +48,7 @@ add_library(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(${PROJECT_NAME}
+  ${catkin_LIBRARIES}
   ${OPENGL_LIBRARIES}
   ${ASSIMP_LIBRARIES}
   dl
@@ -121,3 +123,9 @@ install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
   FILES_MATCHING PATTERN "*.h"
 )
+
+# To use the shaders in an install environment, install the shaders folder
+foreach(dir include/gl_depth_sim/shaders)
+   install(DIRECTORY ${dir}/
+      DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach()
