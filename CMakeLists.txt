@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(gl_depth_sim)
 
-add_compile_options(-std=c++11 -Wall -Wextra)
+add_compile_options(-std=c++14 -Wall -Wextra)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp # Used for ROS examples
@@ -19,6 +19,7 @@ find_package(Eigen3 REQUIRED)
 # Extensions
 find_package(assimp REQUIRED) # Just used for loading models in mesh_loader.h
 find_package(OpenCV REQUIRED) # Used for interface extension
+find_package(PCL REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include
