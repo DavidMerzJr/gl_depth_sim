@@ -1,6 +1,9 @@
 #include "gl_depth_sim/interfaces/pcl_interface.h"
 
-void gl_depth_sim::toPointCloudXYZ(const gl_depth_sim::CameraProperties& camera, const gl_depth_sim::DepthImage& depth,
+namespace gl_depth_sim
+{
+
+void toPointCloudXYZ(const gl_depth_sim::CameraProperties& camera, const gl_depth_sim::DepthImage& depth,
                                    pcl::PointCloud<pcl::PointXYZ>& out)
 {
   out.width = depth.cols;
@@ -27,4 +30,13 @@ void gl_depth_sim::toPointCloudXYZ(const gl_depth_sim::CameraProperties& camera,
       }
     }
   } // end of loop
+}
+
+void meshToPCLPolygonMesh(const std::unique_ptr<gl_depth_sim::Mesh>& mesh, pcl::PolygonMesh& pcl_mesh)
+{
+  pcl_mesh.polygons.clear();
+
+  return;
+}
+
 }

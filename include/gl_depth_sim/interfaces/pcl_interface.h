@@ -1,10 +1,12 @@
 #ifndef GL_DEPTH_SIM_PCL_INTERFACE_H
 #define GL_DEPTH_SIM_PCL_INTERFACE_H
 
-#include "gl_depth_sim/camera_properties.h"
-
 #include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
+#include <pcl/PolygonMesh.h>
+
+#include <gl_depth_sim/camera_properties.h>
+#include <gl_depth_sim/mesh.h>
 
 namespace gl_depth_sim
 {
@@ -14,6 +16,8 @@ namespace gl_depth_sim
  * resulting point cloud is organized (has width and height) and NOT dense. Invalid points are marked as NAN.
  */
 void toPointCloudXYZ(const CameraProperties& camera, const DepthImage& depth, pcl::PointCloud<pcl::PointXYZ>& out);
+
+void meshToPCLPolygonMesh(const std::unique_ptr<gl_depth_sim::Mesh>& mesh, pcl::PolygonMesh& pcl_mesh);
 
 }
 
