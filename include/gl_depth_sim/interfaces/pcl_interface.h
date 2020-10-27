@@ -17,7 +17,22 @@ namespace gl_depth_sim
  */
 void toPointCloudXYZ(const CameraProperties& camera, const DepthImage& depth, pcl::PointCloud<pcl::PointXYZ>& out);
 
-void meshToPCLPolygonMesh(const std::unique_ptr<gl_depth_sim::Mesh>& mesh, pcl::PolygonMesh& pcl_mesh);
+/**
+ * @brief toPolygonMesh - constructs a pcl::PolygonMesh mesh using the supplied gl_depth_sim::Mesh
+ * as a template.  Vertices and faces should be 1:1 between the source and return value.  Note that
+ * converting to pcl::PolygonMesh causes a loss of normal information.
+ * @param mesh - input - a triangular mesh.  Non-triangular meshes will not process correctly.
+ * @return - an analogous pcl::PolygonMesh
+ */
+pcl::PolygonMesh toPolygonMesh(const Mesh& mesh);
+
+/**
+ * @brief extractVerticesAsPointCloud - extract the vertices of a gl_depth_sim::Mesh as a PCL
+ * PointCloud.
+ * @param mesh - input - a triangular mesh in 3D Space
+ * @return - a pcl::PointCloud containing pcl::PointXYZ representing each vertex of the mesh
+ */
+pcl::PointCloud<pcl::PointXYZ> extractVerticesAsPointCloud(const Mesh& mesh);
 
 }
 
