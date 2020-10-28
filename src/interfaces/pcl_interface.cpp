@@ -44,7 +44,7 @@ pcl::PointCloud<pcl::PointXYZ> extractVerticesAsPointCloud(const Mesh& mesh)
   pointcloud.reserve(mesh.vertices().size());
   for (const Eigen::Vector3f& vertex : mesh.vertices())
   {
-    pointcloud.emplace_back(vertex(0), vertex(1), vertex(2));
+    pointcloud.push_back(pcl::PointXYZ(vertex(0), vertex(1), vertex(2)));
   }
   return pointcloud;
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 
 void gl_depth_sim::ShaderProgram::init(const std::string& vertex_shader, const std::string& frag_shader)
