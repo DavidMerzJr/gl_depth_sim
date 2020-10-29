@@ -1,7 +1,8 @@
-#version 330 core
+#version 460 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec3 VertexColorIn;
+layout (location = 3) in vec3 VertexColorIn2;
 
 // Struct used to define one gun
 struct SpotLight {
@@ -49,7 +50,7 @@ void main()
 //   vec3 norm = aNormal;
 
    // Reset the color for the vertex. Eventually this will need to be stored in the vertex buffer
-//   vec3 result = vec3(0, 0, 0);
+//   vec3 result = vec3(0.1, 0.2, 0.3);
    vec3 result = VertexColorIn;
 
    // Add light from all spotlights

@@ -3,11 +3,9 @@
 #include <gl_depth_sim/glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/string_cast.hpp>
 
 #include <gl_depth_sim/shader_program.h>
 #include <gl_depth_sim/mesh_loader.h>
@@ -24,8 +22,8 @@ int main(int argc, char** argv)
   // glfw: initialize and configure
   // ------------------------------
   glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
   // glfw window creation
@@ -120,7 +118,7 @@ int main(int argc, char** argv)
 
       // compute mvp
       Eigen::Projective3d mvp = Eigen::Projective3d::Identity();
-      // depth_program_->setUniformMat4("mvp", mvp.matrix().cast<float>());
+//       depth_program_->setUniformMat4("mvp", mvp.matrix().cast<float>());
 
       glBeginTransformFeedback(GL_TRIANGLES);
       glDrawElements(GL_TRIANGLES, renderable_mesh->numIndices(), GL_UNSIGNED_INT, 0);

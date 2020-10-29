@@ -15,6 +15,7 @@ public:
   unsigned vao() const { return vao_; }
   unsigned vbo() const { return vbo_; }
   unsigned ebo() const { return ebo_; }
+  unsigned tbo() const { return tbo_; }
 
   std::size_t numIndices() const { return num_indices_; }
 
@@ -25,7 +26,7 @@ private:
   unsigned int vao_;
   /** @brief Vertex buffer object: Stores vertices in GPU memory */
   unsigned int vbo_;
-
+  /** @brief Transfer buffer object: Stores vertices to be transfered back */
   unsigned int tbo_;
   /** @brief Element buffer object: Stores indices in vbo that get drawn */
   unsigned int ebo_;

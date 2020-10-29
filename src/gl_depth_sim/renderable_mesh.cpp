@@ -42,14 +42,15 @@ void gl_depth_sim::RenderableMesh::setupGL(const Mesh& mesh)
 
   Eigen::Vector3f init_data[mesh.indices().size()];
   for (int i = 0; i < mesh.vertices().size(); i++)
-    init_data[i] = Eigen::Vector3f(0, 0, 0);
+    init_data[i] = Eigen::Vector3f(0.5, 0.0, 0.0);
 
   // Set the tranfer feedback buffer to be dynamic since it changes frequently
   glBindBuffer(GL_ARRAY_BUFFER, tbo_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(Eigen::Vector3f) * mesh.vertices().size(), init_data, GL_DYNAMIC_DRAW);
-  glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, tbo_);
+//  glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, tbo_);
+  glBindBufferBase(GL_ARRAY_BUFFER_BINDING, 0, tbo_);
 
-  glBindBuffer(GL_ARRAY_BUFFER, vbo_);
+//  glBindBuffer(GL_ARRAY_BUFFER, vbo_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) *  mesh.indices().size(), mesh.indices().data(),
                GL_STATIC_DRAW);
