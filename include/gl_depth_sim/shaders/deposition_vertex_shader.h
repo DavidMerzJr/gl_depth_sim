@@ -2,7 +2,7 @@
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec3 VertexColorIn;
-layout (location = 3) in vec3 VertexColorIn2;
+layout (location = 3) in vec3 VertexColorBufferOut;
 
 // Struct used to define one gun
 struct SpotLight {
@@ -55,7 +55,7 @@ void main()
 
    // Add light from all spotlights
    for(int i = 0; i < NR_LIGHTS; i++)
-     result += CalcSpotLight(spotLights[i], norm, aPos)*0.01;
+     result += CalcSpotLight(spotLights[i], norm, aPos)*0.1;
 
    // Set the result
    VertexColor = result;
