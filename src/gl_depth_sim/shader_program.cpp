@@ -104,8 +104,6 @@ gl_depth_sim::ShaderProgram::ShaderProgram(const std::string& vertex_shader_path
   }
 
   // Send to init
-//  std::cout << vertex_shader << std::endl;
-//  std::cout << frag_shader << std::endl;
   init(vertex_shader, frag_shader);
 }
 

@@ -21,6 +21,8 @@ public:
 
   std::size_t numIndices() const { return num_indices_; }
 
+  std::vector<Mesh> getMeshes() const { return meshes_; }
+
   void addMesh(const Mesh& mesh);
   void setupGL();
 
