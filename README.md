@@ -14,9 +14,9 @@ I provide extensions for using the resulting depth data (and thus have dependenc
  -  PCL (PointCloud\<PointXYZ>)
 
 
-If you have ROS, you have everything but GLFW already. To get running:
+If you have ROS, you have everything but GLFW and GLM (a GL-based math library) already. To get running:
 ```
-sudo apt install libglfw3-dev
+sudo apt install libglfw3-dev libglm-dev
 ```
 ## Example
 ![Stanford Dragon](docs/depth.gif)
