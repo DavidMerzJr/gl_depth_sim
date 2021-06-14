@@ -34,6 +34,7 @@ void gl_depth_sim::RenderableMesh::setupGL()
   std::vector<unsigned> all_indices;
   unsigned prev_index_len = 0;
 
+  // TODO: Check if normals and vertices are the same size
   for (auto &mesh : meshes_)
   {
     total_length += mesh.vertices().size();
